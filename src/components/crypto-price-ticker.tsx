@@ -13,12 +13,10 @@ interface CryptoPrice {
 }
 
 interface CoinGeckoData {
-  id: string
-  symbol: string
-  name: string
-  current_price: number
-  price_change_percentage_24h: number
-  price_change_24h: number
+  [key: string]: {
+    usd: number
+    usd_24h_change: number
+  }
 }
 
 export function CryptoPriceTicker() {
@@ -42,24 +40,24 @@ export function CryptoPriceTicker() {
     try {
       const ids = cryptoMapping.map(crypto => crypto.id).join(',')
       const response = await fetch(
-        `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=${ids}&order=market_cap_desc&per_page=10&page=1&sparkline=false&price_change_percentage=24h`
+        `https://api.coingecko.com/api/v3/simple/price?ids=${ids}&vs_currencies=usd&include_24hr_change=true`
       )
       
       if (!response.ok) {
         throw new Error('Failed to fetch prices')
       }
       
-      const data: CoinGeckoData[] = await response.json()
+      const data: CoinGeckoData = await response.json()
       
       const formattedPrices: CryptoPrice[] = cryptoMapping.map(crypto => {
-        const coinData = data.find(coin => coin.id === crypto.id)
+        const coinData = data[crypto.id]
         if (coinData) {
           return {
             symbol: crypto.symbol,
             name: crypto.name,
-            price: coinData.current_price,
-            change: coinData.price_change_24h,
-            changePercent: coinData.price_change_percentage_24h,
+            price: coinData.usd,
+            change: coinData.usd_24h_change || 0,
+            changePercent: coinData.usd_24h_change || 0,
             url: crypto.url
           }
         }
