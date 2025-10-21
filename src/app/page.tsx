@@ -14,14 +14,12 @@ export default function Home() {
   const [isAnnual, setIsAnnual] = useState(false)
   const [expandedFaq, setExpandedFaq] = useState<number | null>(null)
 
-  // Hardcoded pricing data
+  // Hardcoded pricing data (base monthly prices)
   const pricingPlans = [
     {
       name: "Explorer",
       description: "Perfect for getting started",
-      price: isAnnual ? 0 : 0,
-      yearlyPrice: 0,
-      originalPrice: null,
+      monthlyPrice: 0,
       features: [
         "Access to basic AI tools",
         "Community forum access",
@@ -35,9 +33,7 @@ export default function Home() {
     {
       name: "Alpha",
       description: "Most popular for serious traders",
-      price: isAnnual ? 36 : 49,
-      yearlyPrice: 432,
-      originalPrice: isAnnual ? 588 : 588,
+      monthlyPrice: 49,
       features: [
         "1000+ AI tools unlimited access",
         "200+ AI agents deployment",
@@ -54,9 +50,7 @@ export default function Home() {
     {
       name: "Whale",
       description: "For institutions and power users",
-      price: isAnnual ? 149 : 199,
-      yearlyPrice: 1788,
-      originalPrice: isAnnual ? 2388 : 2388,
+      monthlyPrice: 199,
       features: [
         "Everything in Alpha plan",
         "Unlimited AI agent deployments",
@@ -376,7 +370,13 @@ export default function Home() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            {pricingPlans.map((plan) => (
+            {pricingPlans.map((plan) => {
+              const monthlyPrice = plan.monthlyPrice
+              const annualMonthlyPrice = Math.round(monthlyPrice * 0.75) // 25% off
+              const annualTotal = annualMonthlyPrice * 12
+              const displayPrice = isAnnual ? annualMonthlyPrice : monthlyPrice
+
+              return (
               <Card key={plan.name} className={`relative ${plan.popular ? 'border-orange-500 shadow-lg shadow-orange-500/10' : ''}`}>
                 {plan.popular && (
                   <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
@@ -388,15 +388,15 @@ export default function Home() {
                   <CardDescription>{plan.description}</CardDescription>
                   <div className="mt-4">
                     <div className="flex items-baseline justify-center">
-                      <span className="text-4xl font-bold">${plan.price}</span>
+                      <span className="text-4xl font-bold">${displayPrice}</span>
                       <span className="text-muted-foreground ml-2">/mo</span>
                     </div>
-                    {/* {plan.originalPrice && (
-                      <div className="text-sm text-muted-foreground mt-1">
-                        <span className="line-through">${plan.originalPrice}/mo</span>
-                        <span className="text-green-600 ml-2">Save ${plan.originalPrice - plan.price}/mo</span>
+                    {isAnnual && monthlyPrice > 0 && (
+                      <div className="text-sm mt-1 text-center">
+                        <span className="text-muted-foreground line-through">${monthlyPrice}/mo</span>
+                        <span className="text-muted-foreground ml-2">Billed ${annualTotal}/year</span>
                       </div>
-                    )} */}
+                    )}
                   </div>
                 </CardHeader>
                 <CardContent>
@@ -426,7 +426,8 @@ export default function Home() {
                   </a>
                 </CardContent>
               </Card>
-            ))}
+              )
+            })}
           </div>
         </div>
       </div>
