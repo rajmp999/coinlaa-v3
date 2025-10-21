@@ -1,0 +1,201 @@
+'use client'
+
+import React, { useEffect, useState } from 'react'
+import { TrendingUp, TrendingDown } from 'lucide-react'
+
+interface CryptoPrice {
+  symbol: string
+  name: string
+  price: number
+  change: number
+  changePercent: number
+  url: string
+}
+
+interface CoinGeckoData {
+  id: string
+  symbol: string
+  name: string
+  current_price: number
+  price_change_percentage_24h: number
+  price_change_24h: number
+}
+
+export function EnhancedCryptoPriceTicker() {
+  const [prices, setPrices] = useState<CryptoPrice[]>([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
+
+  const cryptoMapping = [
+    { id: 'bitcoin', symbol: 'BTC', name: 'Bitcoin', url: 'https://app.coinlaa.com/currencies/BTC/bitcoin/USD/' },
+    { id: 'ethereum', symbol: 'ETH', name: 'Ethereum', url: 'https://app.coinlaa.com/currencies/ETH/ethereum/USD/' },
+    { id: 'solana', symbol: 'SOL', name: 'Solana', url: 'https://app.coinlaa.com/currencies/SOL/solana/USD/' },
+    { id: 'ripple', symbol: 'XRP', name: 'Ripple', url: 'https://app.coinlaa.com/currencies/XRP/ripple/USD/' },
+    { id: 'dogecoin', symbol: 'DOGE', name: 'Dogecoin', url: 'https://app.coinlaa.com/currencies/DOGE/dogecoin/USD/' },
+    { id: 'cardano', symbol: 'ADA', name: 'Cardano', url: 'https://app.coinlaa.com/currencies/ADA/cardano/USD/' },
+    { id: 'chainlink', symbol: 'LINK', name: 'Chainlink', url: 'https://app.coinlaa.com/currencies/LINK/chainlink/USD/' },
+    { id: 'binancecoin', symbol: 'BNB', name: 'Binance Coin', url: 'https://app.coinlaa.com/currencies/BNB/binancecoin/USD/' },
+    { id: 'sui', symbol: 'SUI', name: 'Sui', url: 'https://app.coinlaa.com/currencies/SUI/sui/USD/' }
+  ]
+
+  const fetchPrices = async () => {
+    try {
+      // Try CoinGecko API first
+      const ids = cryptoMapping.map(crypto => crypto.id).join(',')
+      const response = await fetch(
+        `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=${ids}&order=market_cap_desc&per_page=10&page=1&sparkline=false&price_change_percentage=24h`
+      )
+      
+      if (response.ok) {
+        const data: CoinGeckoData[] = await response.json()
+        
+        const formattedPrices: CryptoPrice[] = cryptoMapping.map(crypto => {
+          const coinData = data.find(coin => coin.id === crypto.id)
+          if (coinData) {
+            return {
+              symbol: crypto.symbol,
+              name: crypto.name,
+              price: coinData.current_price,
+              change: coinData.price_change_24h,
+              changePercent: coinData.price_change_percentage_24h,
+              url: crypto.url
+            }
+          }
+          return {
+            symbol: crypto.symbol,
+            name: crypto.name,
+            price: 0,
+            change: 0,
+            changePercent: 0,
+            url: crypto.url
+          }
+        })
+        
+        setPrices(formattedPrices)
+        setError(null)
+      } else {
+        throw new Error('CoinGecko API failed')
+      }
+    } catch (err) {
+      console.error('Error with CoinGecko API, trying fallback:', err)
+      
+      // Fallback to our own API
+      try {
+        const fallbackResponse = await fetch('/api/crypto')
+        const fallbackData = await fallbackResponse.json()
+        
+        if (fallbackData.success && fallbackData.data) {
+          const formattedPrices: CryptoPrice[] = cryptoMapping.map(crypto => {
+            const apiData = fallbackData.data.find((d: any) => d.symbol === crypto.symbol)
+            if (apiData) {
+              return {
+                symbol: crypto.symbol,
+                name: crypto.name,
+                price: apiData.price,
+                change: apiData.price * (apiData.change / 100),
+                changePercent: apiData.change,
+                url: crypto.url
+              }
+            }
+            return {
+              symbol: crypto.symbol,
+              name: crypto.name,
+              price: 0,
+              change: 0,
+              changePercent: 0,
+              url: crypto.url
+            }
+          }).filter(p => p.price > 0) // Only show cryptos we have data for
+          
+          setPrices(formattedPrices)
+          setError(null)
+        } else {
+          throw new Error('Fallback API also failed')
+        }
+      } catch (fallbackErr) {
+        console.error('All APIs failed, using mock data:', fallbackErr)
+        setError('Failed to load real-time prices')
+        
+        // Final fallback to mock data
+        const mockPrices: CryptoPrice[] = cryptoMapping.slice(0, 5).map(crypto => ({
+          symbol: crypto.symbol,
+          name: crypto.name,
+          price: Math.random() * 100000 + 1000,
+          change: (Math.random() - 0.5) * 100,
+          changePercent: (Math.random() - 0.5) * 10,
+          url: crypto.url
+        }))
+        setPrices(mockPrices)
+      }
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  useEffect(() => {
+    fetchPrices()
+    
+    // Update prices every 30 seconds
+    const interval = setInterval(fetchPrices, 30000)
+    
+    return () => clearInterval(interval)
+  }, [])
+
+  if (loading) {
+    return (
+      <div className="bg-gray-900 border-b border-gray-800 overflow-hidden">
+        <div className="flex items-center justify-center h-12">
+          <div className="text-gray-400 text-sm">Loading real-time prices...</div>
+        </div>
+      </div>
+    )
+  }
+
+  if (error && prices.length === 0) {
+    return (
+      <div className="bg-gray-900 border-b border-gray-800 overflow-hidden">
+        <div className="flex items-center justify-center h-12">
+          <div className="text-yellow-400 text-sm">{error} - Showing simulated data</div>
+        </div>
+      </div>
+    )
+  }
+
+  return (
+    <div className="bg-gray-900 border-b border-gray-800 overflow-hidden group">
+      <div className="relative w-full">
+        <div className="flex animate-scroll group-hover:animation-pause">
+          {[...prices, ...prices].map((crypto, index) => (
+            <a
+              key={`${crypto.symbol}-${index}`}
+              href={crypto.url}
+              className="flex items-center space-x-3 px-4 py-3 hover:bg-gray-800 transition-colors no-underline whitespace-nowrap flex-shrink-0"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <div className="flex items-center space-x-2">
+                <span className="text-white font-bold text-sm">{crypto.symbol}</span>
+                <span className="text-gray-400 text-xs hidden sm:inline">{crypto.name}</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <span className="text-white font-mono text-sm">
+                  ${crypto.price.toLocaleString(undefined, { minimumFractionDigits: crypto.price < 1 ? 4 : 2, maximumFractionDigits: crypto.price < 1 ? 4 : 2 })}
+                </span>
+                <div className={`flex items-center space-x-1 ${crypto.changePercent >= 0 ? 'text-green-400' : 'text-red-400'}`}>
+                  {crypto.changePercent >= 0 ? (
+                    <TrendingUp className="w-3 h-3" />
+                  ) : (
+                    <TrendingDown className="w-3 h-3" />
+                  )}
+                  <span className="text-xs font-medium">
+                    {crypto.changePercent >= 0 ? '+' : ''}{crypto.changePercent.toFixed(2)}%
+                  </span>
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  )
+}

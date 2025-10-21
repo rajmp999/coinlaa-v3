@@ -1,0 +1,86 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// Slider Management
+model Slider {
+  id          String   @id @default(cuid())
+  title       String
+  punchline   String
+  fomo        String
+  ctaText     String
+  ctaLink     String
+  backgroundImage String
+  iconName    String
+  order       Int      @default(0)
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+// FAQ Management
+model FAQ {
+  id        String   @id @default(cuid())
+  question  String
+  answer    String
+  order     Int      @default(0)
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// Pricing Plans
+model PricingPlan {
+  id          String   @id @default(cuid())
+  name        String
+  description String
+  badge       String?
+  isHighlighted Boolean @default(false)
+  order       Int      @default(0)
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  // Relations
+  pricingTiers PricingTier[]
+}
+
+// Pricing Tiers (Monthly, Quarterly, Yearly)
+model PricingTier {
+  id          String   @id @default(cuid())
+  planId      String
+  period      String   // "monthly", "quarterly", "yearly"
+  price       String
+  originalPrice String?
+  features    String   // JSON string of features array
+  ctaText     String
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  // Relations
+  plan        PricingPlan @relation(fields: [planId], references: [id], onDelete: Cascade)
+}
+
+// Admin Users
+model Admin {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String
+  name      String
+  role      String   @default("admin")
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
