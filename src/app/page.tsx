@@ -6,7 +6,7 @@ import { Badge } from '@/components/ui/badge'
 import { Separator } from '@/components/ui/separator'
 import { ArrowUpRight, Globe, Bot, Zap, BookOpen, Users, TrendingUp, Shield, Clock, Star, ChevronRight, Menu, X, Check, ArrowRight } from 'lucide-react'
 import { useState, useEffect } from 'react'
-import { CryptoPriceTicker } from '@/components/crypto-price-ticker'
+import CryptoPriceTicker from '@/components/crypto-price-ticker'
 import { FullScreenHeroCarousel } from '@/components/full-screen-hero-carousel'
 
 export default function Home() {
@@ -33,7 +33,7 @@ export default function Home() {
     {
       name: "Alpha",
       description: "Most popular for serious traders",
-      monthlyPrice: 49,
+      monthlyPrice: 40,
       features: [
         "1000+ AI tools unlimited access",
         "200+ AI agents deployment",
@@ -364,7 +364,7 @@ export default function Home() {
                 />
               </button>
               <span className={`text-sm ${isAnnual ? 'font-medium' : 'text-muted-foreground'}`}>
-                Annual (Save 25%)
+                Annual (Save 50%)
               </span>
             </div>
           </div>
@@ -372,7 +372,7 @@ export default function Home() {
           <div className="grid md:grid-cols-3 gap-8">
             {pricingPlans.map((plan) => {
               const monthlyPrice = plan.monthlyPrice
-              const annualMonthlyPrice = Math.round(monthlyPrice * 0.75) // 25% off
+              const annualMonthlyPrice = Math.round(monthlyPrice * 0.5) // 25% off
               const annualTotal = annualMonthlyPrice * 12
               const displayPrice = isAnnual ? annualMonthlyPrice : monthlyPrice
 
