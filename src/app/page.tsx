@@ -6,7 +6,7 @@ import { Badge } from '@/components/ui/badge'
 import { Separator } from '@/components/ui/separator'
 import { ArrowUpRight, Globe, Bot, Zap, BookOpen, Users, TrendingUp, Shield, Clock, Star, ChevronRight, Menu, X, Check, ArrowRight } from 'lucide-react'
 import { useState, useEffect } from 'react'
-import { StaticCryptoPriceTicker } from '@/components/static-crypto-ticker'
+import { CryptoPriceTicker } from '@/components/crypto-price-ticker'
 import { FullScreenHeroCarousel } from '@/components/full-screen-hero-carousel'
 
 export default function Home() {
@@ -155,8 +155,8 @@ export default function Home() {
         )}
       </nav>
 
-      {/* Static Crypto Price Ticker */}
-      <StaticCryptoPriceTicker />
+      {/* Real-time Crypto Price Ticker */}
+      <CryptoPriceTicker />
 
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
