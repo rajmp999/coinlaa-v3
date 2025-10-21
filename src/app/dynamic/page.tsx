@@ -415,7 +415,7 @@ export default function Home() {
           </div>
 
           {/* Stats Section */}
-          <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8">
+          {/* <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8">
             <div className="text-center">
               <div className="text-3xl md:text-4xl font-bold text-orange-600 mb-2">$2.5B+</div>
               <div className="text-sm text-muted-foreground">Trading Volume</div>
@@ -432,7 +432,7 @@ export default function Home() {
               <div className="text-3xl md:text-4xl font-bold text-green-600 mb-2">24/7</div>
               <div className="text-sm text-muted-foreground">Support</div>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
 
@@ -618,35 +618,7 @@ export default function Home() {
               </div>
             </div>
             
-            <div>
-              <h4 className="font-semibold mb-4">Product</h4>
-              <ul className="space-y-2 text-sm">
-                <li><a href="#why-coinlaa" className="text-muted-foreground hover:text-orange-500 transition-colors">Features</a></li>
-                <li><a href="#pricing" className="text-muted-foreground hover:text-orange-500 transition-colors">Pricing</a></li>
-                <li><a href="/api" className="text-muted-foreground hover:text-orange-500 transition-colors">API</a></li>
-                <li><a href="/mobile" className="text-muted-foreground hover:text-orange-500 transition-colors">Mobile App</a></li>
-              </ul>
-            </div>
-            
-            <div>
-              <h4 className="font-semibold mb-4">Company</h4>
-              <ul className="space-y-2 text-sm">
-                <li><a href="/about" className="text-muted-foreground hover:text-orange-500 transition-colors">About</a></li>
-                <li><a href="/blog" className="text-muted-foreground hover:text-orange-500 transition-colors">Blog</a></li>
-                <li><a href="/careers" className="text-muted-foreground hover:text-orange-500 transition-colors">Careers</a></li>
-                <li><a href="/contact" className="text-muted-foreground hover:text-orange-500 transition-colors">Contact</a></li>
-              </ul>
-            </div>
-            
-            <div>
-              <h4 className="font-semibold mb-4">Support</h4>
-              <ul className="space-y-2 text-sm">
-                <li><a href="/help" className="text-muted-foreground hover:text-orange-500 transition-colors">Help Center</a></li>
-                <li><a href="/community" className="text-muted-foreground hover:text-orange-500 transition-colors">Community</a></li>
-                <li><a href="/status" className="text-muted-foreground hover:text-orange-500 transition-colors">Status</a></li>
-                <li><a href="/security" className="text-muted-foreground hover:text-orange-500 transition-colors">Security</a></li>
-              </ul>
-            </div>
+          
           </div>
           
           <Separator className="my-8" />

@@ -324,7 +324,7 @@ export default function Home() {
           </div>
 
           {/* Stats Section */}
-          <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8">
+          {/* <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8">
             <div className="text-center">
               <div className="text-3xl md:text-4xl font-bold text-orange-600 mb-2">1000+</div>
               <div className="text-sm text-muted-foreground">AI Tools</div>
@@ -341,7 +341,7 @@ export default function Home() {
               <div className="text-3xl md:text-4xl font-bold text-green-600 mb-2">24/7</div>
               <div className="text-sm text-muted-foreground">Intelligence</div>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
 
@@ -391,12 +391,12 @@ export default function Home() {
                       <span className="text-4xl font-bold">${plan.price}</span>
                       <span className="text-muted-foreground ml-2">/mo</span>
                     </div>
-                    {plan.originalPrice && (
+                    {/* {plan.originalPrice && (
                       <div className="text-sm text-muted-foreground mt-1">
                         <span className="line-through">${plan.originalPrice}/mo</span>
                         <span className="text-green-600 ml-2">Save ${plan.originalPrice - plan.price}/mo</span>
                       </div>
-                    )}
+                    )} */}
                   </div>
                 </CardHeader>
                 <CardContent>
@@ -497,49 +497,17 @@ export default function Home() {
       {/* Footer */}
       <footer className="pt-12 pb-4 px-4 bg-background border-t">
         <div className="container">
-          <div className="grid gap-8 md:grid-cols-4">
-            <div>
-              <div className="flex items-center space-x-2 mb-4">
-                <img 
-                  src="/logo.png" 
-                  alt="Coinlaa" 
-                  className="w-32 h-16 object-contain"
-                />
-              </div>
-              <p className="text-sm text-muted-foreground">
-                The ultimate crypto social network for traders and investors.
-              </p>
+          <div className="text-center">
+            <div className="flex items-center justify-center space-x-2 mb-4">
+              <img 
+                src="/logo.png" 
+                alt="Coinlaa" 
+                className="w-32 h-16 object-contain"
+              />
             </div>
-            
-            <div>
-              <h4 className="font-semibold mb-4">Product</h4>
-              <ul className="space-y-2 text-sm text-muted-foreground">
-                <li>Features</li>
-                <li>Pricing</li>
-                <li>API</li>
-                <li>Mobile App</li>
-              </ul>
-            </div>
-            
-            <div>
-              <h4 className="font-semibold mb-4">Company</h4>
-              <ul className="space-y-2 text-sm text-muted-foreground">
-                <li>About</li>
-                <li>Blog</li>
-                <li>Careers</li>
-                <li>Contact</li>
-              </ul>
-            </div>
-            
-            <div>
-              <h4 className="font-semibold mb-4">Legal</h4>
-              <ul className="space-y-2 text-sm text-muted-foreground">
-                <li>Privacy Policy</li>
-                <li>Terms of Service</li>
-                <li>Cookie Policy</li>
-                <li>Compliance</li>
-              </ul>
-            </div>
+            <p className="text-sm text-muted-foreground max-w-md mx-auto">
+              The ultimate crypto social network for traders and investors.
+            </p>
           </div>
           
           <Separator className="my-8" />

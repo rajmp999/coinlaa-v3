@@ -5,24 +5,19 @@ const nextConfig: NextConfig = {
   output: 'export',
   trailingSlash: true,
   images: {
-    unoptimized: true
+    unoptimized: true,
   },
   typescript: {
     ignoreBuildErrors: true,
   },
-  // 禁用 Next.js 热重载，由 nodemon 处理重编译
+  // Enable standard Next.js dev experience (HMR, fast refresh)
   reactStrictMode: false,
-  webpack: (config, { dev }) => {
-    if (dev) {
-      // 禁用 webpack 的热模块替换
-      config.watchOptions = {
-        ignored: ['**/*'], // 忽略所有文件变化
-      };
-    }
+  webpack: (config) => {
+    // Do not override watch options in dev; allow Next.js to watch files
     return config;
   },
   eslint: {
-    // 构建时忽略ESLint错误
+    // Ignore ESLint errors during builds
     ignoreDuringBuilds: true,
   },
 };
