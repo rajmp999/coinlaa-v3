@@ -35,7 +35,7 @@ export default function Home() {
     {
       name: "Alpha",
       description: "Most popular for serious traders",
-      price: isAnnual ? 25 : 49,
+      price: isAnnual ? 36 : 49,
       yearlyPrice: 432,
       originalPrice: isAnnual ? 588 : 588,
       features: [
