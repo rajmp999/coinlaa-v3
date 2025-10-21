@@ -4,9 +4,9 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Separator } from '@/components/ui/separator'
-import { ArrowUpRight, Globe, Bot, Zap, BookOpen, Users, TrendingUp, Shield, Clock, Star, ChevronRight, Menu, X, Check, ArrowRight } from 'lucide-react'
+import { ArrowUpRight, Globe, Bot, Zap, BookOpen, Users, TrendingUp, Shield, Clock, Star, ChevronRight, Menu, X, Check, ArrowRight, Bitcoin, Brain } from 'lucide-react'
 import { useState, useEffect } from 'react'
-import CryptoPriceTicker from '@/components/crypto-price-ticker'
+import { CryptoPriceTicker } from '@/components/crypto-price-ticker'
 import { FullScreenHeroCarousel } from '@/components/full-screen-hero-carousel'
 
 export default function Home() {
@@ -36,12 +36,11 @@ export default function Home() {
       monthlyPrice: 40,
       features: [
         "1000+ AI tools unlimited access",
-        "200+ AI agents deployment",
+        "200+ AI agents",
         "Real-time event alerts",
         "Advanced analytics dashboard",
         "100+ crypto courses",
         "Priority support",
-        "API access",
         "Custom AI agent training"
       ],
       cta: "Choose Your Plan & Start Today",
@@ -61,7 +60,7 @@ export default function Home() {
         "Exclusive research reports",
         "Early access to new features"
       ],
-      cta: "Book a Demo",
+      cta: "Contact Us",
       popular: false
     }
   ]
@@ -226,9 +225,55 @@ export default function Home() {
         <div className="container max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Why Choose CoinLaa?</h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-xl text-muted-foreground text-left max-w-2xl mx-auto">
               The most comprehensive crypto platform with AI-powered tools and insights
             </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
+            <Card className="text-center">
+              <CardHeader>
+                <div className="mx-auto w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-4">
+                  <Bitcoin className="w-6 h-6 text-orange-600" />
+                </div>
+                <CardTitle>25+ Bitcoin AI Agents</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground text-left">
+                  Explore Next-gen AI Bitcoin tools — from transaction explainers to mining and mempool analyzers. Perfect for traders and developers seeking real-time Bitcoin intelligence.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="text-center">
+              <CardHeader>
+                <div className="mx-auto w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+                  <Zap className="w-6 h-6 text-purple-600" />
+                </div>
+                <CardTitle>Lightning AI Tools</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground text-left">
+                  Discover AI-powered Lightning tools:payment fee optimizers, channel planners. Perfect for Bitcoiners building faster, smarter payments.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="text-center">
+              <CardHeader>
+                <div className="mx-auto w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+                  <TrendingUp className="w-6 h-6 text-blue-600" />
+                </div>
+                <CardTitle>Ordinal AI tools</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground text-left">
+                  Explore AI-powered tools for Ordinals, Tokens, and Smart Contracts — from BRC-20 creators to NFT assistants. Built for expanding Bitcoin beyond payments.
+                </p>
+              </CardContent>
+            </Card>
+
+        
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -240,7 +285,7 @@ export default function Home() {
                 <CardTitle>1000+ AI Tools</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground">
+                <p className="text-muted-foreground text-left">
                   Access the largest collection of AI-powered tools for trading analysis, portfolio management, and market research.
                 </p>
               </CardContent>
@@ -249,13 +294,27 @@ export default function Home() {
             <Card className="text-center">
               <CardHeader>
                 <div className="mx-auto w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
-                  <Zap className="w-6 h-6 text-purple-600" />
+                  <Brain className="w-6 h-6 text-purple-600" />
                 </div>
                 <CardTitle>200+ AI Agents</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground">
+                <p className="text-muted-foreground text-left">
                   Deploy custom AI agents that automate tasks, provide insights, and engage with your community 24/7.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="text-center">
+              <CardHeader>
+                <div className="mx-auto w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mb-4">
+                  <Users className="w-6 h-6 text-indigo-600" />
+                </div>
+                <CardTitle>Crypto Community</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground text-left">
+                  Join thousands of traders, investors, and innovators in the world's first crypto social network.
                 </p>
               </CardContent>
             </Card>
@@ -268,11 +327,13 @@ export default function Home() {
                 <CardTitle>Real-time Alerts</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground">
+                <p className="text-muted-foreground text-left">
                   Get instant notifications for market movements, price breakouts, and important crypto events.
                 </p>
               </CardContent>
             </Card>
+
+            
 
             <Card className="text-center">
               <CardHeader>
@@ -282,7 +343,7 @@ export default function Home() {
                 <CardTitle>100+ Courses</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground">
+                <p className="text-muted-foreground text-left">
                   Learn from expert-led courses covering trading strategies, blockchain technology, and crypto security.
                 </p>
               </CardContent>
@@ -296,44 +357,32 @@ export default function Home() {
                 <CardTitle>Secure & Reliable</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground">
+                <p className="text-muted-foreground text-left">
                   Bank-grade security and 99.9% uptime ensure your data and investments are always protected.
                 </p>
               </CardContent>
             </Card>
 
-            <Card className="text-center">
-              <CardHeader>
-                <div className="mx-auto w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mb-4">
-                  <Users className="w-6 h-6 text-indigo-600" />
-                </div>
-                <CardTitle>Community Driven</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground">
-                  Join thousands of traders, investors, and innovators in the world's first crypto social network.
-                </p>
-              </CardContent>
-            </Card>
+            
           </div>
 
           {/* Stats Section */}
           {/* <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8">
             <div className="text-center">
               <div className="text-3xl md:text-4xl font-bold text-orange-600 mb-2">1000+</div>
-              <div className="text-sm text-muted-foreground">AI Tools</div>
+              <div className="text-sm text-muted-foreground text-left">AI Tools</div>
             </div>
             <div className="text-center">
               <div className="text-3xl md:text-4xl font-bold text-purple-600 mb-2">200+</div>
-              <div className="text-sm text-muted-foreground">AI Agents</div>
+              <div className="text-sm text-muted-foreground text-left">AI Agents</div>
             </div>
             <div className="text-center">
               <div className="text-3xl md:text-4xl font-bold text-blue-600 mb-2">100+</div>
-              <div className="text-sm text-muted-foreground">Courses</div>
+              <div className="text-sm text-muted-foreground text-left">Courses</div>
             </div>
             <div className="text-center">
               <div className="text-3xl md:text-4xl font-bold text-green-600 mb-2">24/7</div>
-              <div className="text-sm text-muted-foreground">Intelligence</div>
+              <div className="text-sm text-muted-foreground text-left">Intelligence</div>
             </div>
           </div> */}
         </div>
@@ -344,13 +393,13 @@ export default function Home() {
         <div className="container max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Simple, Transparent Pricing</h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-8">
+            <p className="text-xl text-muted-foreground text-left max-w-2xl mx-auto mb-8">
               Choose the plan that fits your needs. Start free and scale as you grow.
             </p>
             
             {/* Billing Toggle */}
             <div className="flex items-center justify-center space-x-4">
-              <span className={`text-sm ${!isAnnual ? 'font-medium' : 'text-muted-foreground'}`}>Monthly</span>
+              <span className={`text-sm ${!isAnnual ? 'font-medium' : 'text-muted-foreground text-left'}`}>Monthly</span>
               <button
                 onClick={() => setIsAnnual(!isAnnual)}
                 className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
@@ -363,7 +412,7 @@ export default function Home() {
                   }`}
                 />
               </button>
-              <span className={`text-sm ${isAnnual ? 'font-medium' : 'text-muted-foreground'}`}>
+              <span className={`text-sm ${isAnnual ? 'font-medium' : 'text-muted-foreground text-left'}`}>
                 Annual (Save 50%)
               </span>
             </div>
@@ -389,12 +438,12 @@ export default function Home() {
                   <div className="mt-4">
                     <div className="flex items-baseline justify-center">
                       <span className="text-4xl font-bold">${displayPrice}</span>
-                      <span className="text-muted-foreground ml-2">/mo</span>
+                      <span className="text-muted-foreground text-left ml-2">/mo</span>
                     </div>
                     {isAnnual && monthlyPrice > 0 && (
                       <div className="text-sm mt-1 text-center">
-                        <span className="text-muted-foreground line-through">${monthlyPrice}/mo</span>
-                        <span className="text-muted-foreground ml-2">Billed ${annualTotal}/year</span>
+                        <span className="text-muted-foreground text-left line-through">${monthlyPrice}/mo</span>
+                        <span className="text-muted-foreground text-left ml-2">Billed ${annualTotal}/year</span>
                       </div>
                     )}
                   </div>
@@ -437,7 +486,7 @@ export default function Home() {
         <div className="container max-w-4xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Frequently Asked Questions</h2>
-            <p className="text-xl text-muted-foreground">Have questions? We've got answers.</p>
+            <p className="text-xl text-muted-foreground text-left">Have questions? We've got answers.</p>
           </div>
 
           <div className="space-y-4">
@@ -451,7 +500,7 @@ export default function Home() {
                 </CardHeader>
                 {expandedFaq === index && (
                   <CardContent className="pt-0">
-                    <p className="text-muted-foreground">{item.answer}</p>
+                    <p className="text-muted-foreground text-left">{item.answer}</p>
                   </CardContent>
                 )}
               </Card>
@@ -506,14 +555,14 @@ export default function Home() {
                 className="w-32 h-16 object-contain"
               />
             </div>
-            <p className="text-sm text-muted-foreground max-w-md mx-auto">
+            <p className="text-sm text-muted-foreground text-left max-w-md mx-auto">
               The ultimate crypto social network for traders and investors.
             </p>
           </div>
           
           <Separator className="my-8" />
           
-          <div className="flex flex-col md:flex-row justify-between items-center text-sm text-muted-foreground">
+          <div className="flex flex-col md:flex-row justify-between items-center text-sm text-muted-foreground text-left">
             <p>&copy; 2024 Coinlaa. All rights reserved.</p>
             <div className="flex items-center space-x-4 mt-4 md:mt-0">
               <Globe className="w-4 h-4" />
