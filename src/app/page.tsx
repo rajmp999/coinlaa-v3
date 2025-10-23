@@ -73,7 +73,7 @@ export default function Home() {
     {
       name: "Whale",
       description: "For institutions and power users",
-      monthlyPrice: 199,
+      monthlyPrice: 99,
       features: [
         "Everything in Alpha plan",
         "Unlimited AI agent deployments",

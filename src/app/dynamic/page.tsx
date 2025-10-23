@@ -138,7 +138,7 @@ export default function Home() {
     {
       name: "Whale",
       description: "For institutions and power users",
-      monthlyPrice: 199,
+      monthlyPrice: 99,
       annualPrice: 149.25, // 25% off: 199 * 0.75 = 149.25
       isFree: false,
       features: [
