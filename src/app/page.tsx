@@ -158,21 +158,16 @@ export default function Home() {
               FAQ
             </a>
             <a
-              href="https://app.coinlaa.com"
+              href="https://app.coinlaa.com/register"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm font-medium transition-colors hover:text-orange-600"
+              className="block"
             >
-              Launch
+              <Button className="bg-orange-500 hover:bg-orange-600 text-white">
+                Launch App
+              </Button>
             </a>
-            <a
-              href="https://app.coinlaa.com/login/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm font-medium transition-colors hover:text-orange-600"
-            >
-              Sign In
-            </a>
+            
             <a
               href="https://app.coinlaa.com/register"
               target="_blank"
@@ -222,20 +217,14 @@ export default function Home() {
                 FAQ
               </a>
               <a
-                href="https://app.coinlaa.com"
+                href="https://app.coinlaa.com/register"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-sm font-medium transition-colors hover:text-orange-600"
+                className="block"
               >
-                Launch
-              </a>
-              <a
-                href="https://app.coinlaa.com/login/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-sm font-medium transition-colors hover:text-orange-600"
-              >
-                Sign In
+                <Button className="w-full bg-orange-500 hover:bg-orange-600 text-white">
+                  Launch App
+                </Button>
               </a>
               <a
                 href="https://app.coinlaa.com/register"
