@@ -225,7 +225,7 @@ export default function Home() {
               FAQ
             </a>
             <Button className="bg-orange-500 hover:bg-orange-600 text-white">
-              Sign Up Free
+              Sign Up
             </Button>
           </div>
 
@@ -266,7 +266,7 @@ export default function Home() {
                 FAQ
               </a>
               <Button className="w-full bg-orange-500 hover:bg-orange-600 text-white">
-                Sign Up Free
+                Sign Up
               </Button>
             </div>
           </div>
