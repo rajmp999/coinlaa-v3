@@ -2,7 +2,7 @@
 
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
-import { ArrowRight, Sparkles, Bot, Users, BookOpen, Globe, Zap } from 'lucide-react'
+import { ArrowRight, Sparkles, Bot, Users, BookOpen, Globe, Zap, Bitcoin } from 'lucide-react'
 
 export function HeroSection() {
   return (
@@ -28,7 +28,6 @@ export function HeroSection() {
 
           {/* Main Heading */}
           <h1 className="text-xl md:text-3xl lg:text-4xl font-bold text-slate-800 mb-3 leading-tight">
-            Connect, Learn, and Analyze with
             <span className="block text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-purple-600">
               AI-Powered Crypto Intelligence
             </span>
@@ -57,6 +56,10 @@ export function HeroSection() {
 
           {/* Feature Pills - Enhanced Visibility with Dark Text */}
           <div className="flex flex-wrap justify-center gap-4">
+          <div className="flex items-center space-x-2 bg-gradient-to-r from-green-100/90 to-green-200/90 backdrop-blur-sm border border-green-300/50 rounded-full px-4 py-2.5 shadow-lg shadow-green-500/20">
+                <Bitcoin className="w-4 h-4 text-green-600" />
+                <span className="text-sm font-semibold text-green-800">BTC AI tool</span>
+              </div>
             <div className="flex items-center space-x-2 bg-gradient-to-r from-orange-100/90 to-orange-200/90 backdrop-blur-sm border border-orange-300/50 rounded-full px-4 py-2.5 shadow-lg shadow-orange-500/20">
               <Bot className="w-4 h-4 text-orange-600" />
               <span className="text-sm font-semibold text-orange-800">1000+ AI Tools</span>
@@ -69,10 +72,7 @@ export function HeroSection() {
               <BookOpen className="w-4 h-4 text-blue-600" />
               <span className="text-sm font-semibold text-blue-800">100+ Courses</span>
             </div>
-            <div className="flex items-center space-x-2 bg-gradient-to-r from-green-100/90 to-green-200/90 backdrop-blur-sm border border-green-300/50 rounded-full px-4 py-2.5 shadow-lg shadow-green-500/20">
-              <Globe className="w-4 h-4 text-green-600" />
-              <span className="text-sm font-semibold text-green-800">24/7 Intelligence</span>
-            </div>
+            
           </div>
         </div>
       </div>

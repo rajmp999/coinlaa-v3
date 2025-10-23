@@ -1,18 +1,42 @@
-'use client'
+"use client";
 
-import { Button } from '@/components/ui/button'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { Badge } from '@/components/ui/badge'
-import { Separator } from '@/components/ui/separator'
-import { ArrowUpRight, Globe, Bot, Zap, BookOpen, Users, TrendingUp, Shield, Clock, Star, ChevronRight, Menu, X, Check, ArrowRight, Bitcoin, Brain } from 'lucide-react'
-import { useState, useEffect } from 'react'
-import { CryptoPriceTicker } from '@/components/crypto-price-ticker'
-import { FullScreenHeroCarousel } from '@/components/full-screen-hero-carousel'
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Separator } from "@/components/ui/separator";
+import {
+  ArrowUpRight,
+  Globe,
+  Bot,
+  Zap,
+  BookOpen,
+  Users,
+  TrendingUp,
+  Shield,
+  Clock,
+  Star,
+  ChevronRight,
+  Menu,
+  X,
+  Check,
+  ArrowRight,
+  Bitcoin,
+  Brain,
+} from "lucide-react";
+import { useState, useEffect } from "react";
+import { CryptoPriceTicker } from "@/components/crypto-price-ticker";
+import { FullScreenHeroCarousel } from "@/components/full-screen-hero-carousel";
 
 export default function Home() {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const [isAnnual, setIsAnnual] = useState(false)
-  const [expandedFaq, setExpandedFaq] = useState<number | null>(null)
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isAnnual, setIsAnnual] = useState(false);
+  const [expandedFaq, setExpandedFaq] = useState<number | null>(null);
 
   // Hardcoded pricing data (base monthly prices)
   const pricingPlans = [
@@ -25,10 +49,10 @@ export default function Home() {
         "Community forum access",
         "5 AI agent interactions/month",
         "Basic market data",
-        "Email support"
+        "Email support",
       ],
       cta: "Start for Free",
-      popular: false
+      popular: false,
     },
     {
       name: "Alpha",
@@ -41,10 +65,10 @@ export default function Home() {
         "Advanced analytics dashboard",
         "100+ crypto courses",
         "Priority support",
-        "Custom AI agent training"
+        "Custom AI agent training",
       ],
       cta: "Choose Your Plan & Start Today",
-      popular: true
+      popular: true,
     },
     {
       name: "Whale",
@@ -58,40 +82,46 @@ export default function Home() {
         "Custom integrations",
         "Advanced security features",
         "Exclusive research reports",
-        "Early access to new features"
+        "Early access to new features",
       ],
       cta: "Contact Us",
-      popular: false
-    }
-  ]
+      popular: false,
+    },
+  ];
 
   // Hardcoded FAQ data
   const faqItems = [
     {
       question: "How do I register for Coinlaa?",
-      answer: "Registration is simple! Click on any 'Join Now' or 'Free Registration' button, fill out the short form, and you'll get immediate access to our free tier."
+      answer:
+        "Registration is simple! Click on any 'Join Now' or 'Free Registration' button, fill out the short form, and you'll get immediate access to our free tier.",
     },
     {
       question: "Are the AI tools difficult to use?",
-      answer: "Not at all! Our AI tools are designed with user-friendliness in mind. We provide comprehensive tutorials, documentation, and video guides to help you get started quickly."
+      answer:
+        "Not at all! Our AI tools are designed with user-friendliness in mind. We provide comprehensive tutorials, documentation, and video guides to help you get started quickly.",
     },
     {
       question: "Can I cancel my subscription anytime?",
-      answer: "Yes, you can cancel your subscription at any time. No long-term commitments or hidden fees. You'll continue to have access until the end of your billing period."
+      answer:
+        "Yes, you can cancel your subscription at any time. No long-term commitments or hidden fees. You'll continue to have access until the end of your billing period.",
     },
     {
       question: "Do you offer customer support?",
-      answer: "We offer 24/7 customer support via email and live chat. Alpha and Whale plan members also get priority support with faster response times."
+      answer:
+        "We offer 24/7 customer support via email and live chat. Alpha and Whale plan members also get priority support with faster response times.",
     },
     {
       question: "Is my data secure?",
-      answer: "Absolutely! We use industry-standard encryption and security measures to protect your data. We're also compliant with GDPR and other data protection regulations."
+      answer:
+        "Absolutely! We use industry-standard encryption and security measures to protect your data. We're also compliant with GDPR and other data protection regulations.",
     },
     {
       question: "Can I integrate Coinlaa with other platforms?",
-      answer: "Yes! We offer API access for Alpha and Whale plans, allowing you to integrate our tools and data with your existing workflows and platforms."
-    }
-  ]
+      answer:
+        "Yes! We offer API access for Alpha and Whale plans, allowing you to integrate our tools and data with your existing workflows and platforms.",
+    },
+  ];
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800">
@@ -99,18 +129,41 @@ export default function Home() {
       <nav className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="container flex h-16 items-center justify-between px-4">
           <div className="flex items-center space-x-2">
-            <img 
-              src="/logo.png" 
-              alt="Coinlaa" 
+            <img
+              src="/logo.png"
+              alt="Coinlaa"
               className="w-32 h-16 object-contain"
             />
           </div>
-          
+
           <div className="hidden md:flex items-center space-x-6">
-            <a href="#why-coinlaa" className="text-sm font-medium hover:text-primary transition-colors">Why CoinLaa</a>
-            <a href="#pricing" className="text-sm font-medium hover:text-primary transition-colors">Pricing</a>
-            <a href="#faq" className="text-sm font-medium hover:text-primary transition-colors">FAQ</a>
-            <a 
+            <a
+              href="#why-coinlaa"
+              className="text-sm font-medium hover:text-primary transition-colors"
+            >
+              Why CoinLaa
+            </a>
+            <a
+              href="#pricing"
+              className="text-sm font-medium hover:text-primary transition-colors"
+            >
+              Pricing
+            </a>
+            <a
+              href="#faq"
+              className="text-sm font-medium hover:text-primary transition-colors"
+            >
+              FAQ
+            </a>
+            <a
+              href="https://app.coinlaa.com/login/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm font-medium transition-colors hover:text-orange-600"
+            >
+              Sign In
+            </a>
+            <a
               href="https://app.coinlaa.com/register"
               target="_blank"
               rel="noopener noreferrer"
@@ -121,25 +174,52 @@ export default function Home() {
               </Button>
             </a>
           </div>
-          
-          <Button 
-            variant="ghost" 
+
+          <Button
+            variant="ghost"
             size="icon"
             className="md:hidden"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
-            {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            {isMobileMenuOpen ? (
+              <X className="w-5 h-5" />
+            ) : (
+              <Menu className="w-5 h-5" />
+            )}
           </Button>
         </div>
-        
+
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
           <div className="md:hidden border-t bg-background/95 backdrop-blur">
             <div className="container px-4 py-4 space-y-3">
-              <a href="#why-coinlaa" className="block text-sm font-medium hover:text-primary transition-colors">Why CoinLaa</a>
-              <a href="#pricing" className="block text-sm font-medium hover:text-primary transition-colors">Pricing</a>
-              <a href="#faq" className="block text-sm font-medium hover:text-primary transition-colors">FAQ</a>
-              <a 
+              <a
+                href="#why-coinlaa"
+                className="block text-sm font-medium hover:text-primary transition-colors"
+              >
+                Why CoinLaa
+              </a>
+              <a
+                href="#pricing"
+                className="block text-sm font-medium hover:text-primary transition-colors"
+              >
+                Pricing
+              </a>
+              <a
+                href="#faq"
+                className="block text-sm font-medium hover:text-primary transition-colors"
+              >
+                FAQ
+              </a>
+              <a
+                href="https://app.coinlaa.com/login/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm font-medium transition-colors hover:text-orange-600"
+              >
+                Sign In
+              </a>
+              <a
                 href="https://app.coinlaa.com/register"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -171,20 +251,20 @@ export default function Home() {
             <div className="flex justify-center mb-3">
               <div className="bg-orange-500/10 text-orange-400 border-orange-500/20 px-4 py-2 text-base font-medium backdrop-blur-sm rounded-full border inline-flex items-center">
                 <Star className="w-4 h-4 mr-2" />
-                The Complete Crypto Social Network with 1000+ AI Tools & 200+ AI Agents
+                The Complete Crypto Social Network with 1000+ AI Tools & 200+ AI
+                Agents
               </div>
             </div>
 
             <h1 className="text-xl md:text-3xl lg:text-4xl font-bold text-slate-800 mb-3 leading-tight">
-              Connect, Learn, and Analyze with
               <span className="block text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-purple-600">
                 AI-Powered Crypto Intelligence
               </span>
             </h1>
 
             {/* <div className="flex flex-col sm:flex-row gap-3 justify-center mb-6"> */}
-              {/* <Button className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white text-base px-6 py-3 h-auto rounded-full font-semibold transition-all duration-300 hover:scale-105 shadow-lg shadow-orange-500/25"> */}
-                {/* Access AI Tools Free
+            {/* <Button className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white text-base px-6 py-3 h-auto rounded-full font-semibold transition-all duration-300 hover:scale-105 shadow-lg shadow-orange-500/25"> */}
+            {/* Access AI Tools Free
                 <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
               
@@ -194,21 +274,29 @@ export default function Home() {
             </div> */}
 
             <div className="flex flex-wrap justify-center gap-4">
+              <div className="flex items-center space-x-2 bg-gradient-to-r from-green-100/90 to-green-200/90 backdrop-blur-sm border border-green-300/50 rounded-full px-4 py-2.5 shadow-lg shadow-green-500/20">
+                <Bitcoin className="w-4 h-4 text-green-600" />
+                <span className="text-sm font-semibold text-green-800">
+                  BTC AI tool
+                </span>
+              </div>
               <div className="flex items-center space-x-2 bg-gradient-to-r from-orange-100/90 to-orange-200/90 backdrop-blur-sm border border-orange-300/50 rounded-full px-4 py-2.5 shadow-lg shadow-orange-500/20">
                 <Bot className="w-4 h-4 text-orange-600" />
-                <span className="text-sm font-semibold text-orange-800">1000+ AI Tools</span>
+                <span className="text-sm font-semibold text-orange-800">
+                  1000+ AI Tools
+                </span>
               </div>
               <div className="flex items-center space-x-2 bg-gradient-to-r from-purple-100/90 to-purple-200/90 backdrop-blur-sm border border-purple-300/50 rounded-full px-4 py-2.5 shadow-lg shadow-purple-500/20">
                 <Zap className="w-4 h-4 text-purple-600" />
-                <span className="text-sm font-semibold text-purple-800">200+ AI Agents</span>
+                <span className="text-sm font-semibold text-purple-800">
+                  200+ AI Agents
+                </span>
               </div>
               <div className="flex items-center space-x-2 bg-gradient-to-r from-blue-100/90 to-blue-200/90 backdrop-blur-sm border border-blue-300/50 rounded-full px-4 py-2.5 shadow-lg shadow-blue-500/20">
                 <BookOpen className="w-4 h-4 text-blue-600" />
-                <span className="text-sm font-semibold text-blue-800">100+ Courses</span>
-              </div>
-              <div className="flex items-center space-x-2 bg-gradient-to-r from-green-100/90 to-green-200/90 backdrop-blur-sm border border-green-300/50 rounded-full px-4 py-2.5 shadow-lg shadow-green-500/20">
-                <Clock className="w-4 h-4 text-green-600" />
-                <span className="text-sm font-semibold text-green-800">24/7 Intelligence</span>
+                <span className="text-sm font-semibold text-blue-800">
+                  100+ Courses
+                </span>
               </div>
             </div>
           </div>
@@ -224,9 +312,12 @@ export default function Home() {
       <div id="why-coinlaa" className="py-20 px-4 bg-background">
         <div className="container max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Why Choose CoinLaa?</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Why Choose CoinLaa?
+            </h2>
             <p className="text-xl text-muted-foreground text-left max-w-2xl mx-auto">
-              The most comprehensive crypto platform with AI-powered tools and insights
+              The most comprehensive crypto platform with AI-powered tools and
+              insights
             </p>
           </div>
 
@@ -240,7 +331,9 @@ export default function Home() {
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground text-left">
-                  Explore Next-gen AI Bitcoin tools — from transaction explainers to mining and mempool analyzers. Perfect for traders and developers seeking real-time Bitcoin intelligence.
+                  Explore Next-gen AI Bitcoin tools — from transaction
+                  explainers to mining and mempool analyzers. Perfect for
+                  traders and developers seeking real-time Bitcoin intelligence.
                 </p>
               </CardContent>
             </Card>
@@ -254,7 +347,9 @@ export default function Home() {
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground text-left">
-                  Discover AI-powered Lightning tools:payment fee optimizers, channel planners. Perfect for Bitcoiners building faster, smarter payments.
+                  Discover AI-powered Lightning tools:payment fee optimizers,
+                  channel planners. Perfect for Bitcoiners building faster,
+                  smarter payments.
                 </p>
               </CardContent>
             </Card>
@@ -268,12 +363,12 @@ export default function Home() {
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground text-left">
-                  Explore AI-powered tools for Ordinals, Tokens, and Smart Contracts — from BRC-20 creators to NFT assistants. Built for expanding Bitcoin beyond payments.
+                  Explore AI-powered tools for Ordinals, Tokens, and Smart
+                  Contracts — from BRC-20 creators to NFT assistants. Built for
+                  expanding Bitcoin beyond payments.
                 </p>
               </CardContent>
             </Card>
-
-        
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -286,7 +381,8 @@ export default function Home() {
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground text-left">
-                  Access the largest collection of AI-powered tools for trading analysis, portfolio management, and market research.
+                  Access the largest collection of AI-powered tools for trading
+                  analysis, portfolio management, and market research.
                 </p>
               </CardContent>
             </Card>
@@ -300,7 +396,8 @@ export default function Home() {
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground text-left">
-                  Deploy custom AI agents that automate tasks, provide insights, and engage with your community 24/7.
+                  Deploy custom AI agents that automate tasks, provide insights,
+                  and engage with your community 24/7.
                 </p>
               </CardContent>
             </Card>
@@ -314,7 +411,8 @@ export default function Home() {
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground text-left">
-                  Join thousands of traders, investors, and innovators in the world's first crypto social network.
+                  Join thousands of traders, investors, and innovators in the
+                  world's first crypto social network.
                 </p>
               </CardContent>
             </Card>
@@ -328,12 +426,11 @@ export default function Home() {
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground text-left">
-                  Get instant notifications for market movements, price breakouts, and important crypto events.
+                  Get instant notifications for market movements, price
+                  breakouts, and important crypto events.
                 </p>
               </CardContent>
             </Card>
-
-            
 
             <Card className="text-center">
               <CardHeader>
@@ -344,7 +441,8 @@ export default function Home() {
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground text-left">
-                  Learn from expert-led courses covering trading strategies, blockchain technology, and crypto security.
+                  Learn from expert-led courses covering trading strategies,
+                  blockchain technology, and crypto security.
                 </p>
               </CardContent>
             </Card>
@@ -358,12 +456,11 @@ export default function Home() {
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground text-left">
-                  Bank-grade security and 99.9% uptime ensure your data and investments are always protected.
+                  Bank-grade security and 99.9% uptime ensure your data and
+                  investments are always protected.
                 </p>
               </CardContent>
             </Card>
-
-            
           </div>
 
           {/* Stats Section */}
@@ -392,27 +489,40 @@ export default function Home() {
       <div id="pricing" className="py-20 px-4 bg-background">
         <div className="container max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Simple, Transparent Pricing</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Simple, Transparent Pricing
+            </h2>
             <p className="text-xl text-muted-foreground text-left max-w-2xl mx-auto mb-8">
-              Choose the plan that fits your needs. Start free and scale as you grow.
+              Choose the plan that fits your needs. Start free and scale as you
+              grow.
             </p>
-            
+
             {/* Billing Toggle */}
             <div className="flex items-center justify-center space-x-4">
-              <span className={`text-sm ${!isAnnual ? 'font-medium' : 'text-muted-foreground text-left'}`}>Monthly</span>
+              <span
+                className={`text-sm ${
+                  !isAnnual ? "font-medium" : "text-muted-foreground text-left"
+                }`}
+              >
+                Monthly
+              </span>
               <button
                 onClick={() => setIsAnnual(!isAnnual)}
                 className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
-                  isAnnual ? 'bg-orange-500' : 'bg-gray-200'
+                  isAnnual ? "bg-orange-500" : "bg-gray-200"
                 }`}
               >
                 <span
                   className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
-                    isAnnual ? 'translate-x-6' : 'translate-x-1'
+                    isAnnual ? "translate-x-6" : "translate-x-1"
                   }`}
                 />
               </button>
-              <span className={`text-sm ${isAnnual ? 'font-medium' : 'text-muted-foreground text-left'}`}>
+              <span
+                className={`text-sm ${
+                  isAnnual ? "font-medium" : "text-muted-foreground text-left"
+                }`}
+              >
                 Annual (Save 50%)
               </span>
             </div>
@@ -420,62 +530,85 @@ export default function Home() {
 
           <div className="grid md:grid-cols-3 gap-8">
             {pricingPlans.map((plan) => {
-              const monthlyPrice = plan.monthlyPrice
-              const annualMonthlyPrice = Math.round(monthlyPrice * 0.5) // 25% off
-              const annualTotal = annualMonthlyPrice * 12
-              const displayPrice = isAnnual ? annualMonthlyPrice : monthlyPrice
+              const monthlyPrice = plan.monthlyPrice;
+              const annualMonthlyPrice = Math.round(monthlyPrice * 0.5); // 25% off
+              const annualTotal = annualMonthlyPrice * 12;
+              const displayPrice = isAnnual ? annualMonthlyPrice : monthlyPrice;
 
               return (
-              <Card key={plan.name} className={`relative ${plan.popular ? 'border-orange-500 shadow-lg shadow-orange-500/10' : ''}`}>
-                {plan.popular && (
-                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                    <Badge className="bg-orange-500 text-white">Most Popular</Badge>
-                  </div>
-                )}
-                <CardHeader className="text-center">
-                  <CardTitle className="text-2xl">{plan.name}</CardTitle>
-                  <CardDescription>{plan.description}</CardDescription>
-                  <div className="mt-4">
-                    <div className="flex items-baseline justify-center">
-                      <span className="text-4xl font-bold">${displayPrice}</span>
-                      <span className="text-muted-foreground text-left ml-2">/mo</span>
+                <Card
+                  key={plan.name}
+                  className={`relative ${
+                    plan.popular
+                      ? "border-orange-500 shadow-lg shadow-orange-500/10"
+                      : ""
+                  }`}
+                >
+                  {plan.popular && (
+                    <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                      <Badge className="bg-orange-500 text-white">
+                        Most Popular
+                      </Badge>
                     </div>
-                    {isAnnual && monthlyPrice > 0 && (
-                      <div className="text-sm mt-1 text-center">
-                        <span className="text-muted-foreground text-left line-through">${monthlyPrice}/mo</span>
-                        <span className="text-muted-foreground text-left ml-2">Billed ${annualTotal}/year</span>
+                  )}
+                  <CardHeader className="text-center">
+                    <CardTitle className="text-2xl">{plan.name}</CardTitle>
+                    <CardDescription>{plan.description}</CardDescription>
+                    <div className="mt-4">
+                      <div className="flex items-baseline justify-center">
+                        <span className="text-4xl font-bold">
+                          ${displayPrice}
+                        </span>
+                        <span className="text-muted-foreground text-left ml-2">
+                          /mo
+                        </span>
                       </div>
-                    )}
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <ul className="space-y-3 mb-8">
-                    {plan.features.map((feature, index) => (
-                      <li key={index} className="flex items-start">
-                        <Check className="w-5 h-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" />
-                        <span className="text-sm">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  <a 
-                    href={
-                      plan.name === "Explorer" 
-                        ? "https://app.coinlaa.com/register"
-                        : plan.name === "Alpha"
-                        ? "https://app.coinlaa.com/pricing?plan=alpha"
-                        : "https://app.coinlaa.com/enterprise"
-                    }
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block"
-                  >
-                    <Button className={`w-full ${plan.popular ? 'bg-orange-500 hover:bg-orange-600' : ''}`}>
-                      {plan.cta}
-                    </Button>
-                  </a>
-                </CardContent>
-              </Card>
-              )
+                      {isAnnual && monthlyPrice > 0 && (
+                        <div className="text-sm mt-1 text-center">
+                          <span className="text-muted-foreground text-left line-through">
+                            ${monthlyPrice}/mo
+                          </span>
+                          <span className="text-muted-foreground text-left ml-2">
+                            Billed ${annualTotal}/year
+                          </span>
+                        </div>
+                      )}
+                    </div>
+                  </CardHeader>
+                  <CardContent>
+                    <ul className="space-y-3 mb-8">
+                      {plan.features.map((feature, index) => (
+                        <li key={index} className="flex items-start">
+                          <Check className="w-5 h-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" />
+                          <span className="text-sm">{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    <a
+                      href={
+                        plan.name === "Explorer"
+                          ? "https://app.coinlaa.com/register"
+                          : plan.name === "Alpha"
+                          ? "https://app.coinlaa.com/pricing?plan=alpha"
+                          : "https://app.coinlaa.com/enterprise"
+                      }
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block"
+                    >
+                      <Button
+                        className={`w-full ${
+                          plan.popular
+                            ? "bg-orange-500 hover:bg-orange-600"
+                            : ""
+                        }`}
+                      >
+                        {plan.cta}
+                      </Button>
+                    </a>
+                  </CardContent>
+                </Card>
+              );
             })}
           </div>
         </div>
@@ -485,22 +618,38 @@ export default function Home() {
       <div id="faq" className="py-20 px-4 bg-background">
         <div className="container max-w-4xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Frequently Asked Questions</h2>
-            <p className="text-xl text-muted-foreground text-left">Have questions? We've got answers.</p>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Frequently Asked Questions
+            </h2>
+            <p className="text-xl text-muted-foreground text-left">
+              Have questions? We've got answers.
+            </p>
           </div>
 
           <div className="space-y-4">
             {faqItems.map((item, index) => (
-              <Card key={index} className="cursor-pointer" onClick={() => setExpandedFaq(expandedFaq === index ? null : index)}>
+              <Card
+                key={index}
+                className="cursor-pointer"
+                onClick={() =>
+                  setExpandedFaq(expandedFaq === index ? null : index)
+                }
+              >
                 <CardHeader className="pb-3">
                   <div className="flex items-center justify-between">
                     <CardTitle className="text-lg">{item.question}</CardTitle>
-                    <ChevronRight className={`w-5 h-5 transition-transform ${expandedFaq === index ? 'rotate-90' : ''}`} />
+                    <ChevronRight
+                      className={`w-5 h-5 transition-transform ${
+                        expandedFaq === index ? "rotate-90" : ""
+                      }`}
+                    />
                   </div>
                 </CardHeader>
                 {expandedFaq === index && (
                   <CardContent className="pt-0">
-                    <p className="text-muted-foreground text-left">{item.answer}</p>
+                    <p className="text-muted-foreground text-left">
+                      {item.answer}
+                    </p>
                   </CardContent>
                 )}
               </Card>
@@ -516,27 +665,36 @@ export default function Home() {
             Ready to Join the Crypto Revolution?
           </h2>
           <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-            Start your journey with thousands of traders and investors building wealth together.
+            Start your journey with thousands of traders and investors building
+            wealth together.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a 
+            <a
               href="https://app.coinlaa.com/register/"
               target="_blank"
               rel="noopener noreferrer"
               className="block"
             >
-              <Button size="lg" variant="secondary" className="bg-white text-blue-600 hover:bg-gray-100">
+              <Button
+                size="lg"
+                variant="secondary"
+                className="bg-white text-blue-600 hover:bg-gray-100"
+              >
                 Sign Up Now
                 <ArrowUpRight className="w-4 h-4 ml-2" />
               </Button>
             </a>
-            <a 
+            <a
               href="https://app.coinlaa.com"
               target="_blank"
               rel="noopener noreferrer"
               className="block"
             >
-              <Button size="lg" variant="outline" className="border-white bg-white/10 text-white hover:bg-white hover:text-blue-600 backdrop-blur-sm">
+              <Button
+                size="lg"
+                variant="outline"
+                className="border-white bg-white/10 text-white hover:bg-white hover:text-blue-600 backdrop-blur-sm"
+              >
                 Learn More
               </Button>
             </a>
@@ -549,9 +707,9 @@ export default function Home() {
         <div className="container">
           <div className="text-center">
             <div className="flex items-center justify-center space-x-2 mb-4">
-              <img 
-                src="/logo.png" 
-                alt="Coinlaa" 
+              <img
+                src="/logo.png"
+                alt="Coinlaa"
                 className="w-32 h-16 object-contain"
               />
             </div>
@@ -559,9 +717,9 @@ export default function Home() {
               The ultimate crypto social network for traders and investors.
             </p>
           </div>
-          
+
           <Separator className="my-8" />
-          
+
           <div className="flex flex-col md:flex-row justify-between items-center text-sm text-muted-foreground text-left">
             <p>&copy; 2024 Coinlaa. All rights reserved.</p>
             <div className="flex items-center space-x-4 mt-4 md:mt-0">
@@ -574,18 +732,22 @@ export default function Home() {
 
       <style jsx>{`
         @keyframes scroll {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-50%);
+          }
         }
-        
+
         .animate-scroll {
           animation: scroll 20s linear infinite;
         }
-        
+
         .animation-delay-2000 {
           animation-delay: 2s;
         }
-        
+
         .animation-delay-4000 {
           animation-delay: 4s;
         }
@@ -594,11 +756,11 @@ export default function Home() {
           -ms-overflow-style: none;
           scrollbar-width: none;
         }
-        
+
         .scrollbar-hide::-webkit-scrollbar {
           display: none;
         }
       `}</style>
     </div>
-  )
+  );
 }
