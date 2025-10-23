@@ -603,10 +603,14 @@ export default function Home() {
                     <a
                       href={
                         plan.name === "Explorer"
-                          ? "https://app.coinlaa.com/register"
+                          ? "https://app.coinlaa.com/register/explorer/"
                           : plan.name === "Alpha"
-                          ? "https://app.coinlaa.com/pricing?plan=alpha"
-                          : "https://app.coinlaa.com/enterprise"
+                          ? isAnnual
+                            ? "https://app.coinlaa.com/register/alpha-yearly/"
+                            : "https://app.coinlaa.com/register/alpha-monthly/"
+                          : isAnnual
+                          ? "https://app.coinlaa.com/register/whale-yearly/"
+                          : "https://app.coinlaa.com/register/whale-monthly/"
                       }
                       target="_blank"
                       rel="noopener noreferrer"
