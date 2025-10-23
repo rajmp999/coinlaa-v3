@@ -129,11 +129,13 @@ export default function Home() {
       <nav className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="container flex h-16 items-center justify-between px-4">
           <div className="flex items-center space-x-2">
-            <img
-              src="/logo.png"
-              alt="Coinlaa"
-              className="w-32 h-16 object-contain"
-            />
+            <a href="/">
+              <img
+                src="/logo.png"
+                alt="Coinlaa"
+                className="w-32 h-16 object-contain"
+              />
+            </a>
           </div>
 
           <div className="hidden md:flex items-center space-x-6">
@@ -727,11 +729,13 @@ export default function Home() {
         <div className="container">
           <div className="text-center">
             <div className="flex items-center justify-center space-x-2 mb-4">
+            <a href="/">
               <img
                 src="/logo.png"
                 alt="Coinlaa"
                 className="w-32 h-16 object-contain"
               />
+            </a>
             </div>
             <p className="text-sm text-muted-foreground text-left max-w-md mx-auto">
               The ultimate crypto social network for traders and investors.
