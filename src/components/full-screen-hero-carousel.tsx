@@ -23,7 +23,7 @@ const FEATURES: Feature[] = [
     id: "community",
     icon: <Users className="h-8 w-8 text-orange-500" />,
     title: "Crypto's Own Community",
-    punchline: "Crypto's Only Social Space – Don't Miss Out on Exclusive Connections!",
+    punchline: "Crypto's Own Social Space – Don't Miss Out on Exclusive Connections!",
     fomo: "Join the movement. Top traders, creators, and innovators are already here.",
     cta: "Become a Community Insider",
     backgroundImage: "/slide-community.jpg",
