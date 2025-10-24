@@ -284,7 +284,7 @@ export default function Home() {
               <div className="flex items-center space-x-2 bg-gradient-to-r from-green-100/90 to-green-200/90 backdrop-blur-sm border border-green-300/50 rounded-full px-4 py-2.5 shadow-lg shadow-green-500/20">
                 <Bitcoin className="w-4 h-4 text-green-600" />
                 <span className="text-sm font-semibold text-green-800">
-                  BTC AI tool
+                  100+ BTC AI tools
                 </span>
               </div>
               <div className="flex items-center space-x-2 bg-gradient-to-r from-orange-100/90 to-orange-200/90 backdrop-blur-sm border border-orange-300/50 rounded-full px-4 py-2.5 shadow-lg shadow-orange-500/20">
