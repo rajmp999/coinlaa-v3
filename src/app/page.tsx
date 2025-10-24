@@ -158,7 +158,7 @@ export default function Home() {
               FAQ
             </a>
             <a
-              href="https://app.coinlaa.com/register"
+              href="https://app.coinlaa.com"
               target="_blank"
               rel="noopener noreferrer"
               className="block"
@@ -217,7 +217,7 @@ export default function Home() {
                 FAQ
               </a>
               <a
-                href="https://app.coinlaa.com/register"
+                href="https://app.coinlaa.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block"
